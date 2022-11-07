@@ -1,3 +1,23 @@
+var questions = [
+    {
+    question: "What is JavaScript",
+    answerA: "A scripting language used to make a website interactive",
+    answerB: "A web hosting site",
+    answerC: "The name of the robot on Futurama",
+    answerD: "None of the above",
+    correctAnswer: ""
+  },
+  {
+    question: "What is JavaScript",
+    answerA: "A scripting language used to make a website interactive",
+    answerB: "A web hosting site",
+    answerC: "The name of the robot on Futurama",
+    answerD: "None of the above"
+  }
+]
+
+
+
 // 1. What is JavaScript?
 // a) A scripting language used to make a website interactive
 // b) A web hosting site
@@ -33,3 +53,13 @@
 // b) When used in arithmetic operations, null will be converted to zero behind the scenes.
 // c) When used in conditional logic, null will return as false. 
 // d) Null is not considered a primitive value in JavaScript.
+
+var startBtn = document.getElementById("start-button")
+var infoBox = document.getElementById("info-box")
+var questionBox = document.getElementById("questionBox")
+
+startBtn.addEventListener("click", function(){
+    infoBox.style.display = "none"
+    questionBox.style.display = "block"
+    questionBox.textContent = questions[0].question
+})

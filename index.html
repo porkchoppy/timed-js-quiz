@@ -33,6 +33,24 @@
             </div>           
         </div>
     </div>
-    <script src="assets/js/script.js"></script>
+
+    <div id="responses"></div>    
+        <div id="game-over" style="display: none">
+            <h2>Game Over</h2>
+            Your score: <var id="score"></var>
+            </br>
+            Initials: <input type="text" value="initials" id="initials">
+            </br>
+            <input type="button" value="submit" id="submit-initials" onclick="submit_score()">
+        </div>
+
+        <div id="score-page" style = "display: none">
+            <h2>High Scores</h2>
+            <div id="high-scores"></div>
+                <input type="button" value="Back" id="back" onclick="go_home()">
+                <input type="button" id="clear-scores" value="clear" onclick="clear_score()">
+        </div>
+
+        <script src="assets/js/script.js"></script>
 </body>
 </html>

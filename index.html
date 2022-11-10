@@ -10,6 +10,7 @@
 
 <body>
     <div class="box">
+        <!--info box with rules and start button-->
         <div class="box-title">Javascript Quiz - Test Your Knowledge!</div>
             <div id="info-box" class="box">
                 <ul class="list">
@@ -20,9 +21,16 @@
                 </ul>
                 <button class="start-button" id="start-button">Click to start!</button>
             </div>
-                    <h1 id="questionBox" style="display: none;"></h1>
-                        <h2 id="countdown"></h2>
-                            <p id="main"></p>
+            
+            <!--question box with timer-->
+            <div id="questionBox" style="display: none">
+                <ul class="list">
+                    <li class="list-item" id="answerChoices"><button id="answerA"></button></li>
+                    <li class="list-item" id="answerChoices"><button id="answerB"></button></li>
+                    <li class="list-item" id="answerChoices"><button id="answerC"></button></li>
+                    <li class="list-item" id="answerChoices"><button id="answerD"></button></li>
+                </ul>
+            </div>           
         </div>
     </div>
     <script src="assets/js/script.js"></script>

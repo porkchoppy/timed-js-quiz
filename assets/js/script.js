@@ -52,8 +52,8 @@ const questions = [
 
 // variables to manuever the quiz questions via the homepage
 const quiz = document.getElementById("quiz");
-const answer = document.getElementById(".answer");
-const question = document.getElementById("question");
+const answerEl = document.getElementById(".answer");
+const questionEl = document.getElementById("question");
 const textA = document.getElementById("textA");
 const textB = document.getElementById("textB");
 const textC = document.getElementById("textC");
@@ -70,6 +70,82 @@ let timeLeft = 60;
 // var infoBox = document.getElementById("info-box")
 // var questionBox = document.getElementById("questionBox")
 // var questionIndex = 0
+
+//function to initiate the quiz
+function startQuiz() {
+    quiz.style.display = "block";
+    document.getElementById("homepage").classList.toggle("hidden");
+    countdown();
+    loadQuiz();
+}
+
+//function to load questions
+function loadQuiz() {
+    const currentQuizData = quizData[currentQuiz];
+
+    questionEl.innerText = currentQuizData.question;
+    textA.innerText = currentQuizData.a;
+    textB.innerText = currentQuizData.b;
+    textC.innerText = currentQuizData.c;
+    textD.innerText = currentQuizData.d;
+
+    deselectAnswers();
+    console.log("test");
+}
+
+//function to deselect answers after each question
+function deselectAnswers() {
+    answerEl.forEach((answerEl) => (answerEl.checked = false));
+}
+
+//function to check selected answers
+function getSelected() {
+    let answerEl;
+    answerEl.forEach((answerEls) => {
+        if (answerEls.checked) {
+            answer = answerEls.id;
+        }
+    });
+
+    return answer;
+}
+
+//function for push capability of submit button
+function submitAnswer() {
+    let answerEl = document.getElementsByName("answer");
+    let answer;
+    console.log(answerEl);
+
+    for (let i = 0; i < answerEl.length; i++) {
+        if (answerEl[i].checked) {
+            answer = answerEl[i].getAttribute("id");
+        }
+    }
+
+    if (answer === quizData[currentQuiz].correct) {
+        scoreIncrease();
+    } else {
+        scoreDecrease();
+    }
+    currentQuiz++;
+    loadQuiz();
+    console.log(currentScore);
+}
+
+//timer function
+function countdown() {
+    var timeInterval = setInterval(function () {
+        timeLeft--;
+        if (timeLeft <= 0) {
+            clearInterval(timeInterval);
+            endQuiz();
+        } else {
+            timer.textContent = timeLeft;
+        }
+    }, 1000);
+}
+
+//score increase for correctly answered question
 
 startBtn.addEventListener("click", function(){
     infoBox.style.display = "none"
